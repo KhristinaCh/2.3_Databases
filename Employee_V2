@@ -1,0 +1,16 @@
+create table if not exists Employee (
+	id serial primary key,
+	name varchar(100) not null,
+	manager_id integer references Employee(id)
+);
+
+create table if not exists Department (
+	id serial primary key,
+	name varchar(40) not null,
+);
+
+create table if not exists EmployeeDep (
+	id serial primary key,
+	employee_id integer not null references Employee(id),
+	department_id integer not null references Department(id)
+);
